@@ -5,7 +5,27 @@ import { f, auth, database } from './config/config';
 export default function App() {
 
   useEffect(() => {
-    registerUser('test@gmail.com', 'test123!');
+    // registerUser('test@gmail.com', 'test123!');
+    
+    // sign out user
+    // auth.signOut()
+    // .then(() => { 
+    //   console.log('Logged out...')
+    // })
+    // .catch((error) => {
+    //   console.log('Error: ', error);
+    // });
+    
+    // checks if user is logged in
+    f.auth().onAuthStateChanged(function(user) {
+      if(user) {
+        //Logged in
+        console.log('Logged in', user);
+      } else {
+        //Logged out
+        console.log('Logged out');
+      }
+    })
   });
 
   const registerUser = (email, password) => {
